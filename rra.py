@@ -47,7 +47,7 @@ for x in range(input("how much: ")):
 
 	# init the fake person
 
-	fake_person = FakePerson()
+	Fake = FakePerson()
 
 	# TODO: All the timestamp/timezone formatting.
 	
@@ -77,22 +77,22 @@ for x in range(input("how much: ")):
 				'app_version':'v1.1.0 (1))',
 				'device_model':'iPhone'
 			},
-			'hardware_id':fake_person.hardwareId,
+			'hardware_id':Fake.hardwareId,
 			'app_brand':'neighborhoods',
 			'os':'ios'
 		},
 		'profile':{
-			'email':fake_person.email,
-			'last_name':fake_person.last_name,
+			'email':Fake.email,
+			'last_name':Fake.last_name,
 			'metadata':{
 				'user_flow':'nh',
 				'country':'US',
 				'terms_of_service':timestamp,
 				'data_storage_terms':timestamp
 			},
-			'first_name':fake_person.first_name,
-			'password_confirmation':fake_person.password,
-			'password':fake_person.password,
+			'first_name':Fake.first_name,
+			'password_confirmation':Fake.password,
+			'password':Fake.password,
 			'phone_number':''
 		}
 	}
@@ -105,7 +105,7 @@ for x in range(input("how much: ")):
 	#print '{}\n'.format(response.content)
 
 	# Get an oauth token for our account.
-	response = requests.post('https://oauth.ring.com/oauth/token', headers = {'app_brand':'neighborhoods'}, params = {'grant_type':'password', 'client_id':'ring_official_ios', 'username':fake_person.email, 'password':fake_person.password, 'scope':'client'})
+	response = requests.post('https://oauth.ring.com/oauth/token', headers = {'app_brand':'neighborhoods'}, params = {'grant_type':'password', 'client_id':'ring_official_ios', 'username':Fake.email, 'password':Fake..password, 'scope':'client'})
 	#print '{}\n'.format(response.content)
 	response = response.json()
 	authorization = '{} {}'.format(response['token_type'], response['access_token'])
@@ -130,11 +130,11 @@ for x in range(input("how much: ")):
 				'invite_code':inviteCode,
 				'~feature':'referral'
 			},
-			'hardware_id':fake_person.hardwareId,
+			'hardware_id':Fake.hardwareId,
 			'referrer_id':referrerId,
 			'invite_code':inviteCode
 		},
-		'hardware_id':fake_person.hardwareId,
+		'hardware_id':Fake.hardwareId,
 		'referrer_id':referrerId,
 		'invite_code':inviteCode
 	}
