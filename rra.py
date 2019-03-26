@@ -15,35 +15,34 @@ try:
 	referrerId = int(input('what is your referrerId? '))
 except ValueError:
 	 print('Not a valid referrerID. Please use numbers.')
+		quit()
 
 inviteCode = input('what is your invite code? ')
 referrerLink = input('what is your referrerLink? ')
 
-
-
-class FakePerson(object):
-	def __init__(self):
-		self.fake = Faker()
-		self.hardwareId = str(uuid.uuid4()).upper()
-
-		self.first_name = self.fake.first_name()
-		self.last_name = self.fake.last_name()
-
-	@property
-	def email(self):
-		return '{}{}@{}'.format(self.first_name(), random.randint(100, 1000), '@gmail.com')
-	
-	@property
-	def password(self):
-		return self.fake.password(length = random.randint(8, 10), special_chars = False)
-	
-	@property
-	def hardwareId(self):
-		return str(uuid.uuid4()).upper()
-	
-
 # Set up our fake account information.
-for x in range(referrerId):
+for x in range(input("how much: ")):
+	class FakePerson(object):
+		def __init__(self):
+			self.fake = Faker()
+			self.hardwareId = str(uuid.uuid4()).upper()
+
+			self.first_name = self.fake.first_name()
+			self.last_name = self.fake.last_name()
+
+		@property
+		def email(self):
+			return '{}{}@{}'.format(self.first_name(), random.randint(100, 1000), '@gmail.com')
+	
+		@property
+		def password(self):
+			return self.fake.password(length = random.randint(8, 10), special_chars = False)
+	
+		@property
+		def hardwareId(self):
+			return str(uuid.uuid4()).upper()
+	
+
 
 
 	# init the fake person
