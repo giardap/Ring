@@ -1,3 +1,5 @@
+[![License](https://img.shields.io/badge/License-GNU-blue.svg?style=flat-square)](https://github.com/giardap/Ring/blob/master/License.md) ![OS](https://img.shields.io/badge/Tested%20On-Linux%20|%20OSX%20|%20Windows%20|%20Android-yellowgreen.svg?style=flat-square) [![Python2.7](https://img.shields.io/badge/Python-2.7-green.svg?style=flat-square)](https://github.com/giardap/Ring/tree/python2.7) [![Python3](https://img.shields.io/badge/Python-3-green.svg?style=flat-square)](https://github.com/giardap/Ring)
+
 # Ring Referral Abuser
 
 This was a project made by me to easily spoof referrals to your ring account and make fraudulent purchases.
