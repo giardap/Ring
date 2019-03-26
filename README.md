@@ -6,12 +6,13 @@ This was a project made by me to easily spoof referrals to your ring account and
 
 To use this you need to find your referrerId, inviteCode, and referrerLink.
 to find these you will need to use a network tracker such as Charles Proxy or Burp suite and grab the request when clicking your referrering link.
-What you need to do is simple as this
+What you need to do is simple as this.
 
-Create a ring account in the neighbors app.
-Head over to the referral section
-Copy the link and and paste into wherever you can trace the response
-Once you examine the response you will find something that looks like this.
+Step 1. Create a ring account in the neighbors app.
+
+Step 2. Head over to the referral section
+Step 3. Copy the link and and paste into wherever you can trace the response
+Step 4. Once you examine the response you will find something that looks like this.
 ```{
   "session_id" : "615809008687086307",
   "identity" : "youremail@here.com",
@@ -21,7 +22,10 @@ Once you examine the response you will find something that looks like this.
   "link" : "https://download.ring.com/a/key_live_fiAFgsbsLJpNm7gHksC6BgcfwxcJI44h?%24identity_id=615809008687086307"
 }
 ```
-From there you will now have all the necessary parts to make this 
+From there you will now have all the necessary parts to make this work.
+
+Step 5. Profit???
+
 ### Prerequisites
 
 Before you use this you must need:
