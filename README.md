@@ -47,6 +47,11 @@ python ringkill.py
 ```
 and enter valid credentials (referrerId, inviteCode, and referringLink)
 
+## Authors
+
+* **Padraig Marks** - *Initial work* - [Ring Exploit](https://hackerone.com/padraig)
+* **Mustafa (exofeel)** - *Port to Py3* - [Mustafas work](https://github.com/exofeel)
+
 ## Disclaimer
 
 This has been submitted and fixed by Ring along with their referral system being shut down.
