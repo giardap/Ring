@@ -2,10 +2,6 @@
 
 This was a project made by me to easily spoof referrals to your ring account and make fraudulent purchases.
 
-## Disclaimer
-
-This has been submitted and fixed by Ring along wiht their referral system being shut down.
-
 ## Getting Started
 
 To use this you need to find your referrerId, inviteCode, and referrerLink.
