@@ -14,7 +14,7 @@ import requests
 try:
 	referrerId = int(input('what is your referrerId? '))
 except ValueError:
-	return('Not a valid referrerID. Please use numbers.')
+	 print('Not a valid referrerID. Please use numbers.')
 
 inviteCode = input('what is your invite code? ')
 referrerLink = input('what is your referrerLink? ')
@@ -31,11 +31,15 @@ class FakePerson(object):
 
 	@property
 	def email(self):
-		return f"{self.fake.user_name()}{random.randint(100,1000)}@{self.fake.free_email_domain()}"
+		return '{}{}@{}'.format(self.first_name(), random.randint(100, 1000), '@gmail.com')
 	
 	@property
 	def password(self):
 		return self.fake.password(length = random.randint(8, 10), special_chars = False)
+	
+	@property
+	def hardwareId(self):
+		return str(uuid.uuid4()).upper()
 	
 
 # Set up our fake account information.
@@ -67,19 +71,19 @@ for x in range(referrerId):
                  "language" : "en",
                  "resolution" : "375x667",
                  "device_model" : "iPhone",
-                 "ios_version" : "10.2"
-				'app_installation_date':time.strftime('%Y-%m-%d %H:%M:%S +0000', time.gmtime(time.time() - 300)),
-				'language':'en',
+                 "ios_version" : "10.2",
+				'app_installation_date':timestamp,
+				"language" : "en",
 				'build_profile':'store_production',
 				'app_version':'v1.1.0 (1))',
 				'device_model':'iPhone'
 			},
-			'hardware_id':hardwareId,
+			'hardware_id':fake_person.hardwareId,
 			'app_brand':'neighborhoods',
 			'os':'ios'
 		},
 		'profile':{
-			'email':email,
+			'email':fake_person.email,
 			'last_name':fake_person.last_name,
 			'metadata':{
 				'user_flow':'nh',
@@ -88,8 +92,8 @@ for x in range(referrerId):
 				'data_storage_terms':timestamp
 			},
 			'first_name':fake_person.first_name,
-			'password_confirmation':password,
-			'password':password,
+			'password_confirmation':fake_person.password,
+			'password':fake_person.password,
 			'phone_number':''
 		}
 	}
@@ -102,7 +106,7 @@ for x in range(referrerId):
 	#print '{}\n'.format(response.content)
 
 	# Get an oauth token for our account.
-	response = requests.post('https://oauth.ring.com/oauth/token', headers = {'app_brand':'neighborhoods'}, params = {'grant_type':'password', 'client_id':'ring_official_ios', 'username':email, 'password':password, 'scope':'client'})
+	response = requests.post('https://oauth.ring.com/oauth/token', headers = {'app_brand':'neighborhoods'}, params = {'grant_type':'password', 'client_id':'ring_official_ios', 'username':fake_person.email, 'password':fake_person.password, 'scope':'client'})
 	#print '{}\n'.format(response.content)
 	response = response.json()
 	authorization = '{} {}'.format(response['token_type'], response['access_token'])
@@ -127,11 +131,11 @@ for x in range(referrerId):
 				'invite_code':inviteCode,
 				'~feature':'referral'
 			},
-			'hardware_id':hardwareId,
+			'hardware_id':fake_person.hardwareId,
 			'referrer_id':referrerId,
 			'invite_code':inviteCode
 		},
-		'hardware_id':hardwareId,
+		'hardware_id':fake_person.hardwareId,
 		'referrer_id':referrerId,
 		'invite_code':inviteCode
 	}
@@ -143,5 +147,5 @@ for x in range(referrerId):
 		'Authorization': authorization
 	}
 
-	response = requests.post('https://alerts.ring.com/api/end_users/referral', params=params, headers=headers)
+	response = requests.post('https://alerts.ring.com/api/end_users/referral', headers=headers, json=referral)
 	print(response.content)
