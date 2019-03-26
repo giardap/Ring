@@ -1,55 +1,22 @@
-# Python 3 Please.
-
-
+#!/usr/bin/env python2.7
 
 from faker import Faker
-import uuid
-import time
-import random
-import requests
-
+import uuid, time, random, requests
 
 # The referral data for our Ring credit.
-
-try:
-	referrerId = int(input('what is your referrerId? '))
-except ValueError:
-	return('Not a valid referrerID. Please use numbers.')
-
-inviteCode = input('what is your invite code? ')
-referrerLink = input('what is your referrerLink? ')
-
-
-
-class FakePerson(object):
-	def __init__(self):
-		self.fake = Faker()
-		self.hardwareId = str(uuid.uuid4()).upper()
-
-		self.first_name = self.fake.first_name()
-		self.last_name = self.fake.last_name()
-
-	@property
-	def email(self):
-		return f"{self.fake.user_name()}{random.randint(100,1000)}@{self.fake.free_email_domain()}"
-	
-	@property
-	def password(self):
-		return self.fake.password(length = random.randint(8, 10), special_chars = False)
-	
+referrerId = 7743547
+inviteCode = '52d7ee1e2b'
+referrerLink = 'https://download.ring.com/epSnOFbp5P'
 
 # Set up our fake account information.
-for x in range(referrerId):
-
-
-	# init the fake person
-
-	fake_person = FakePerson()
+for x in range(input("how much: ")):
+	fake = Faker()
+	email = '{}{}@{}'.format(fake.user_name(), random.randint(100, 1000), fake.free_email_domain())
+	hardwareId = str(uuid.uuid4()).upper()
+	password = fake.password(length = random.randint(8, 10), special_chars = False)
 
 	# TODO: All the timestamp/timezone formatting.
-	
 	offset = '{}{:02}{:02}'.format('-' if time.altzone > 0 else '+', abs(time.altzone) / 3600, abs(time.altzone / 60) % 60)
-	
 	timestamp = time.strftime('%Y-%m-%dT%H:%M') + offset
 	#print 'Timestamp: {}\n'.format(timestamp)
 
@@ -80,14 +47,14 @@ for x in range(referrerId):
 		},
 		'profile':{
 			'email':email,
-			'last_name':fake_person.last_name,
+			'last_name':fake.last_name(),
 			'metadata':{
 				'user_flow':'nh',
 				'country':'US',
 				'terms_of_service':timestamp,
 				'data_storage_terms':timestamp
 			},
-			'first_name':fake_person.first_name,
+			'first_name':fake.first_name(),
 			'password_confirmation':password,
 			'password':password,
 			'phone_number':''
@@ -95,14 +62,11 @@ for x in range(referrerId):
 	}
 
 	# Create an account.
-
-
-
-	response = requests.post('https://api.ring.com/clients_api/profile', headers = {'app_brand':'neighborhoods', 'X-API-LANG':'en'}, params = register)
+	response = requests.post('https://api.ring.com/clients_api/profile', headers = {'app_brand':'neighborhoods', 'X-API-LANG':'en'}, json = register)
 	#print '{}\n'.format(response.content)
 
 	# Get an oauth token for our account.
-	response = requests.post('https://oauth.ring.com/oauth/token', headers = {'app_brand':'neighborhoods'}, params = {'grant_type':'password', 'client_id':'ring_official_ios', 'username':email, 'password':password, 'scope':'client'})
+	response = requests.post('https://oauth.ring.com/oauth/token', headers = {'app_brand':'neighborhoods'}, json = {'grant_type':'password', 'client_id':'ring_official_ios', 'username':email, 'password':password, 'scope':'client'})
 	#print '{}\n'.format(response.content)
 	response = response.json()
 	authorization = '{} {}'.format(response['token_type'], response['access_token'])
@@ -136,12 +100,5 @@ for x in range(referrerId):
 		'invite_code':inviteCode
 	}
 
-
-	headers = {
-		'app_brand': 'neighborhoods',
-		'X-API-LANG': 'en',
-		'Authorization': authorization
-	}
-
-	response = requests.post('https://alerts.ring.com/api/end_users/referral', params=params, headers=headers)
-	print(response.content)
+	response = requests.post('https://alerts.ring.com/api/end_users/referral', headers = {'app_brand':'neighborhoods', 'X-API-LANG':'en', 'Authorization':authorization}, json = referral)
+	print response.content
