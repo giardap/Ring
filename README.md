@@ -46,4 +46,4 @@ and enter valid credentials (referreeId, inviteCode, and referringLink)
 
 ## Disclaimer
 
-This has been submitted and fixed by Ring along wiht their referral system being shut down.
+This has been submitted and fixed by Ring along with their referral system being shut down.
