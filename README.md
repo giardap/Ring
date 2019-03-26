@@ -2,7 +2,7 @@
 
 # Ring Referral Abuser
 
-This was a project made by me to easily spoof referrals to your ring account and make fraudulent purchases.
+This was a project made by me to easily spoof referrals to your ring account.
 
 ## Getting Started
 
