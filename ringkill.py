@@ -4,9 +4,9 @@ from faker import Faker
 import uuid, time, random, requests
 
 # The referral data for our Ring credit.
-referrerId = 
-inviteCode = ''
-referrerLink = ''
+referrerId = input('what is your referrerId? ')
+inviteCode = raw_input('what is your invite code? ')
+referrerLink = raw_input('what is your referrerLink? ')
 
 # Set up our fake account information.
 for x in range(input("how much: ")):
