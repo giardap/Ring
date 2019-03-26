@@ -10,11 +10,11 @@ What you need to do is simple as this.
 
 Step 1. Create a ring account in the neighbors app.
 
-Step 2. Head over to the referral section
+Step 2. Head over to the referral section.
 
-Step 3. Copy the link and and paste into wherever you can trace the response
+Step 3. Copy the link and and paste into wherever you can trace the response.
 
-Step 4. Once you examine the response you will find something that looks like this.
+Step 4. Once you examine the response you will find something that looks like this:
 
 ```{
   "session_id" : "615809008687086307",
