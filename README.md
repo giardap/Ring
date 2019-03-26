@@ -45,7 +45,7 @@ To use this Just simply run
 pip install requirements.txt
 python ringkill.py
 ```
-and enter valid credentials (referreeId, inviteCode, and referringLink)
+and enter valid credentials (referrerId, inviteCode, and referringLink)
 
 ## Disclaimer
 
