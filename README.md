@@ -36,7 +36,7 @@ Step 5. Profit???
 Before you use this you must need:
 
 ```
-Python 2.7 on any operating system.
+Python 2.7-3.7 on any operating system.
 Pip
 ```
 
@@ -45,7 +45,7 @@ Pip
 To use this Just simply run
 ```
 pip install requirements.txt
-python ringkill.py
+python rra.py
 ```
 and enter valid credentials (referrerId, inviteCode, and referringLink)
 
