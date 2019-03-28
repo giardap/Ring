@@ -77,6 +77,7 @@ and enter valid credentials (referrerId, inviteCode, and referringLink)
 
 * **Padraig Marks** - *Initial work* - [Ring Exploit](https://hackerone.com/padraig)
 * **Mustafa (exofeel)** - *Port to Py3* - [Mustafas work](https://github.com/exofeel)
+* **Niro(7331#1337)** - *Initial work* - [Ring Exploit]
 
 ## Disclaimer
 
