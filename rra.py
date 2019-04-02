@@ -21,7 +21,7 @@ inviteCode = input('what is your invite code? ')
 referrerLink = input('what is your referrerLink? ')
 
 # Set up our fake account information.
-for x in range(input("how much: ")):
+for x in range(int(input("how much: "))):
 	class FakePerson(object):
 		def __init__(self):
 			self.fake = Faker()
