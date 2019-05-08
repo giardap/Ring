@@ -1,13 +1,10 @@
 # Python 3 Please.
 
-
-
 from faker import Faker
 import uuid
 import time
 import random
 import requests
-
 
 # The referral data for our Ring credit.
 
@@ -41,9 +38,6 @@ for x in range(int(input("how much: "))):
 		@property
 		def hardwareId(self):
 			return str(uuid.uuid4()).upper()
-	
-
-
 
 	# init the fake person
 
@@ -99,8 +93,6 @@ for x in range(int(input("how much: "))):
 
 	# Create an account.
 
-
-
 	response = requests.post('https://api.ring.com/clients_api/profile', headers = {'app_brand':'neighborhoods', 'X-API-LANG':'en'}, params = register)
 	#print '{}\n'.format(response.content)
 
@@ -146,5 +138,7 @@ for x in range(int(input("how much: "))):
 		'Authorization': authorization
 	}
 
+	#Submit the request.
+	
 	response = requests.post('https://alerts.ring.com/api/end_users/referral', headers=headers, json=referral)
 	print(response.content)
