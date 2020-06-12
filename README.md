@@ -79,6 +79,8 @@ and enter valid credentials (referrerId, inviteCode, and referringLink)
 * **Mustafa (exofeel)** - *Port to Py3* - [Mustafas work](https://github.com/exofeel)
 * **Niro(7331#1337)** - *Initial work* - Ring Exploit
 
+Special thanks to triggered.pdf and nova for being my test dummies in the PoC of this exploit.
+
 ## Disclaimer
 
 This has been submitted and fixed by Ring along with their referral system being shut down.
